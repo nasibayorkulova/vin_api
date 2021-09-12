@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create model VIN to save vehicle details.
+# Create a model VIN to save vehicle details.
 class VIN(models.Model):
     vin = models.CharField(max_length=17)
     year = models.CharField(max_length=4)
