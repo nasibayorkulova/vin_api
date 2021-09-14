@@ -20,8 +20,8 @@ class VINViewset(mixins.CreateModelMixin, viewsets.GenericViewSet):
             # Checks that the vin number has already been stored
             # Sends the appropriate vehicle details
             vin = VIN.objects.get(vin=vin_number)
-            response = Response(VINReadSerializer(vin).data)
-            return response
+            return Response(VINReadSerializer(vin).data)
+
         except VIN.DoesNotExist:
             # If vin number not saved,
             # the received data stores and sends
@@ -31,7 +31,7 @@ class VINViewset(mixins.CreateModelMixin, viewsets.GenericViewSet):
             year = decode_vin['decode']['vehicle'][0]['year']
             make = decode_vin['decode']['vehicle'][0]['make']
             model = decode_vin['decode']['vehicle'][0]['model']
-            type = decode_vin['decode']['vehicle'][0]['engine']
+            _type = decode_vin['decode']['vehicle'][0]['engine']
             color = 'black'
             dimensions = '4330x1690x1505'
             weight = '1190'
@@ -40,10 +40,9 @@ class VINViewset(mixins.CreateModelMixin, viewsets.GenericViewSet):
             vin.year = year
             vin.make = make
             vin.model = model
-            vin.type = type
+            vin.type = _type
             vin.color = color
             vin.dimensions = dimensions
             vin.weight = weight
             vin.save()
-            response = Response(VINReadSerializer(vin).data)
-            return response
+            return Response(VINReadSerializer(vin).data)
