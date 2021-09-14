@@ -51,7 +51,7 @@ And navigate to admin panel http://127.0.0.1:8000/admin/   with created login an
 
 To run the tests, `cd` into the directory where `manage.py` is:
 ```sh
-(env)$ python manage.py test gc_app
+(env)$ python manage.py test
 ```
 
 ### API request-response
